@@ -61,6 +61,10 @@ def get_licenses_by_date_range(data: pl.LazyFrame, start_date: str, end_date: st
             (pl.col("ParsedDate") >= pl.lit(start_date).str.strptime(pl.Datetime, "%Y-%m-%d")) &
             (pl.col("ParsedDate") <= pl.lit(end_date).str.strptime(pl.Datetime, "%Y-%m-%d"))
         )
+        .select(
+            "Breed",
+            "ParsedDate"
+        )
         .sort("ParsedDate")
         .collect()
     )
