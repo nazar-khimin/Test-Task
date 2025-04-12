@@ -4,8 +4,6 @@ from datetime import date
 import pandas as pd
 from faker import Faker
 from faker.generator import random
-from polars.dependencies import pandas
-
 
 def create_data(locale: str) -> Faker:
     """
@@ -45,4 +43,4 @@ def write_to_csv(file_path: str, num_records: int) -> None:
 if __name__ == '__main__':
     logging.info(f"Started data generation for {date.today()}.")
 
-    write_to_csv("employees.csv", num_records=100)
+    write_to_csv("../data/employees.csv", num_records=100)
