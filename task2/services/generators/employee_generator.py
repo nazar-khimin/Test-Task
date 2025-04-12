@@ -3,6 +3,7 @@ from datetime import date
 import pandas as pd
 from faker import Faker
 from faker.generator import random
+from task2.utls.logger_config import logger
 
 from task2.services.generators.base_faker import create_data
 
@@ -31,10 +32,10 @@ def write_to_csv(file_path: str, num_records: int) -> None:
     df = pd.DataFrame(data, columns=headers)
 
     df.to_csv(file_path, index=False)
-    logging.info(f"Wrote {num_records} records to {file_path}")
+    logger.info(f"Wrote {num_records} records to {file_path}")
 
 
 if __name__ == '__main__':
-    logging.info(f"Started data generation for {date.today()}.")
+    logger.info(f"Started data generation for {date.today()}.")
 
     write_to_csv("../data/employees.csv", num_records=100)
