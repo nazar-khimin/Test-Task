@@ -34,3 +34,17 @@ def licenses_by_breed(data: pl.LazyFrame) -> pl.DataFrame:
     """
     result = data.sql(query).collect()
     return result
+
+def get_top_names(data: pl.LazyFrame, count: int) -> pl.DataFrame:
+    """
+    Counts licenses by LicenseType for each breed using SQL-like operations.
+    """
+    query = f"""        
+        SELECT d."DogName", COUNT(*) as name_count
+        FROM self as d
+        GROUP BY d."DogName"
+        ORDER BY name_count DESC
+        LIMIT {count};
+    """
+    result = data.sql(query).collect()
+    return result
