@@ -1,16 +1,10 @@
-import logging
 from datetime import date
 
 import pandas as pd
 from faker import Faker
 from faker.generator import random
 
-def create_data(locale: str) -> Faker:
-    """
-        Creates a Faker instance for generating localized fake data.
-    """
-    logging.info(f"Created synthetic data for {locale.split('_')[-1]} country code.")
-    return Faker(locale)
+from task2.services.generators.base_faker import create_data
 
 
 def generate_record(fake: Faker) -> list:
