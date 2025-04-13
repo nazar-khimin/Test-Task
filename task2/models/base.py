@@ -9,7 +9,7 @@ class Base(DeclarativeBase):
 
 
 
-DATABASE_URL = "sqlite:///db/company.db"
+DATABASE_URL = "sqlite:///db/company1.db"
 
 engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine)
