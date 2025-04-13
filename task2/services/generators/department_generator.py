@@ -1,23 +1,26 @@
 from typing import List
 
-from faker import Faker
-
 from task2.models import Departments
 
-def generate_department_records(num_records: int) -> List[Departments]:
+def generate_10_department_records() -> List[Departments]:
     """
-    Generates a list of fake Department instances.
+    Creates Department ORM instances using a fixed list of 10 department names.
     """
-    # Create a Faker instance
-    fake = Faker("en_US")
-    departments = []
+    department_names = [
+        "HR",
+        "Engineering",
+        "Marketing",
+        "Sales",
+        "Finance",
+        "Operations",
+        "Legal",
+        "Customer Support",
+        "Product Management",
+        "IT"
+    ]
 
-    for i in range(1, num_records + 1):  # Ensure IDs are sequentially generated
-        department_name = fake.company()  # Generate a fake company name
-        department = Departments(
-            id=i,
-            name=department_name
-        )
-        departments.append(department)
-
+    departments = [
+        Departments(id=i + 1, name=name)
+        for i, name in enumerate(department_names)
+    ]
     return departments
